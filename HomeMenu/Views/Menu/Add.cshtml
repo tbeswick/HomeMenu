@@ -1,0 +1,30 @@
+﻿@using HomeMenu.Models
+@model HomeMenu.Models.EditMenuItemModel
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add</h2>
+
+
+<form id="frmAddMenuItem" method="post" action="/Menu/AddItem" >
+<input type="text" name="menuItemName" id="menuItemName" value="" /><br />
+
+
+
+<select id="menuItemCatergory" name="menuItemCatergory">
+@foreach(ItemCatergoriesModel cat in Model.ItemCatergories)
+{
+
+    <option value="@cat.Name.ToString()" >@cat.Name.ToString()</option>
+
+}
+</select>
+
+<input type="submit" value="Add" >
+
+</form>
+
+

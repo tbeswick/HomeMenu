@@ -29,5 +29,7 @@ namespace HomeMenu.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<HomeMenu.Models.MenuItemModel> MenuItemModels { get; set; }
     }
 }

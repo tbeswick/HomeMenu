@@ -1,0 +1,36 @@
+﻿@using HomeMenu.Models
+@model HomeMenu.Models.EditMenuItemModel
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Item</h2>
+
+
+<form id="frmAddMenuItem" method="post" action="/Menu/EditItem">
+    <input type="text" name="Name" id="Name" value="@Model.MenuItem.Name" /><br />
+    <input type="hidden" name="Id" value="@Model.MenuItem.Id" />
+
+
+    <select id="Catergory" name="Catergory">
+        @foreach(ItemCatergoriesModel cat in Model.ItemCatergories)
+        {
+            var selected = "";
+            if (Model.MenuItem.Catergory.Trim() == cat.Name.ToString().Trim())
+            {
+                selected = "selected";
+            }
+            <option value="@cat.Name" @selected>@cat.Name</option>
+
+        }
+    </select>
+
+    <input type="submit" value="Submit Edit">
+
+</form>
+
+
+
+
