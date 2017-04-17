@@ -52,7 +52,7 @@ namespace HomeMenu.Controllers
             md.MenuItem = await rep.GetItemById(ModelId);
             md.ItemCatergories = await rep.GetItemCatergories(User.Identity.GetUserId());
             md.AvailableIngredients = await igrep.GetItems(User.Identity.GetUserId());
-            md.CurrentIngredients = new List<MenuIngredientModel>(); // rep.GetCurrentItemIngredients(User.Identity.GetUserId());
+            md.CurrentIngredients = await rep.GetCurrentItemIngredients(ModelId);
 
             return View(md);
         }
@@ -84,6 +84,19 @@ namespace HomeMenu.Controllers
             }
 
 
+
+        }
+
+
+        [Route("Menu/AddIngredient")]
+        [HttpPost]
+        public async Task<ActionResult> AddIngredientAsync(AddIngredientToItemModel model)
+        {
+            MenuItemRepository rep = new MenuItemRepository(sqlConnection);
+            await rep.AddIngredientToMenuItem(model);
+
+
+            return null;
 
         }
 

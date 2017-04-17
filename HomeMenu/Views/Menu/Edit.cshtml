@@ -36,25 +36,29 @@
     <h2>Ingredients</h2>
     <ul>
        
-    @foreach(MenuIngredientModel ig in Model.CurrentIngredients)
+    @foreach(MenuItemIngredientModel ig in Model.CurrentIngredients)
     {
-        <li>@ig.Name</li>
+        <li>@ig.IngredientName</li>
     }
     </ul> 
 
     <h2>Add an ingredient</h2>
-    <select id="NewIngredient" name="NewIngredient">
+    <select id="newIngredient" name="newIngredient">
         @foreach (MenuIngredientModel ig in Model.AvailableIngredients)
         {
-            <option value="@ig.Name" >@ig.Name</option>
+            <option value="@ig.Id" >@ig.Name</option>
 
         }
     </select>
-    <a href="#" >add</a> ingredient
+    <a href="#" class="addMenuItemIngredient" >add</a> ingredient
 
+    <input type="hidden" id="userId" value="@Model.MenuItem.UserId" />
+    <input type="hidden" id="itemId" value="@Model.MenuItem.Id" />
 
 
 
 </div>
 
+<div id="tmp">
 
+</div>

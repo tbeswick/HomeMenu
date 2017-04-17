@@ -50,6 +50,75 @@ namespace HomeMenu.Models
             return -1;
         }
 
+
+        public async Task<int> AddIngredientToMenuItem(AddIngredientToItemModel model)
+        {
+
+
+            try
+            {
+                using (SqlConnection db =
+                    new SqlConnection(connectionString))
+                {
+
+                    await db.OpenAsync();
+
+                    string qry = "INSERT INTO IngredientToItem ([MenuItem],[MenuIngredient]) " +
+                                  "VALUES (" +
+                                  "@ItemId,@IngredientId); SELECT CAST(SCOPE_IDENTITY() as int)";
+                    var result = await db.QueryAsync<int>(qry, model);
+                    return result.Single();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine("AddIngredientToMenuItem exception " + ex.Message);
+
+            }
+
+
+            return -1;
+
+
+        }
+
+        
+        public async Task<IList<MenuItemIngredientModel>>GetCurrentItemIngredients(long itemId)
+        {
+
+
+            try
+            {
+                using (SqlConnection db =
+                    new SqlConnection(connectionString))
+                {
+
+                    await db.OpenAsync();
+
+                    string qry = "SELECT * FROM MenuItemsWithIngredients WHERE [ItemId]=@itemid";
+                    var result = await db.QueryAsync<MenuItemIngredientModel>(qry, new { itemid = itemId });
+
+                    return result.ToList();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine("GetCurrentItemIngredients exception " + ex.Message);
+
+            }
+
+            return null;
+
+
+
+        } 
+
+
+
         public async Task<bool> UpdateItem(MenuItemModel model)
         {
             try

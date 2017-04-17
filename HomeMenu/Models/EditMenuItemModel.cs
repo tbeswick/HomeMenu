@@ -12,7 +12,7 @@ namespace HomeMenu.Models
 
         public IList<MenuIngredientModel> AvailableIngredients { get; set; }
 
-        public IList<MenuIngredientModel> CurrentIngredients { get; set; }
+        public IList<MenuItemIngredientModel> CurrentIngredients { get; set; }
 
         public MenuItemModel MenuItem { get; set; }
 
