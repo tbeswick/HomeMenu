@@ -190,8 +190,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\EditIngredientModel.cs" />
     <Compile Include="Models\EditMenuItemModel.cs" />
     <Compile Include="Models\IngredientIndexModel.cs" />
+    <Compile Include="Models\IngredientsCatergoriesModel.cs" />
+    <Compile Include="Models\IngredientToItemModel.cs" />
     <Compile Include="Models\ItemCatergoriesModel.cs" />
     <Compile Include="Models\HomeIndexModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -280,6 +283,7 @@
     <Content Include="Views\Menu\Add.cshtml" />
     <Content Include="Views\Menu\Edit.cshtml" />
     <Content Include="Views\Ingredients\Index.cshtml" />
+    <Content Include="Views\Ingredients\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

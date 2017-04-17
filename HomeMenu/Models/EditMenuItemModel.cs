@@ -10,6 +10,10 @@ namespace HomeMenu.Models
 
         public IList<ItemCatergoriesModel> ItemCatergories { get; set; }
 
+        public IList<MenuIngredientModel> AvailableIngredients { get; set; }
+
+        public IList<MenuIngredientModel> CurrentIngredients { get; set; }
+
         public MenuItemModel MenuItem { get; set; }
 
     }

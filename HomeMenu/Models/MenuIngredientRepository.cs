@@ -21,7 +21,7 @@ namespace HomeMenu.Models
         }
 
 
-        public async Task<bool> CreateItem(MenuIngredientModel model)
+        public async Task<int> CreateItem(MenuIngredientModel model)
         {
             try
             {
@@ -31,24 +31,23 @@ namespace HomeMenu.Models
 
                     await db.OpenAsync();
 
-                    string qry = "INSERT INTO MenuIngredients ([Name],[Type],[Added],[Modifed]) " +
+                    string qry = "INSERT INTO MenuIngredients ([UserId],[Name],[Catergory],[Added],[Modified]) " +
                                   "VALUES (" +
-                                  "@Name,@Catergory,@Added@Modifed)";
-                    await db.QueryAsync(qry, model);
-
-                    return true;
+                                  "@UserId,@Name,@Catergory,@Added,@Modified); SELECT CAST(SCOPE_IDENTITY() as int)";
+                    var result = await db.QueryAsync<int>(qry, model);
+                    return result.Single();
                 }
 
 
             }
             catch (Exception ex)
             {
-                Trace.WriteLine("UpdateMachine exception " + ex.Message);
+                Trace.WriteLine("CreateItem exception " + ex.Message);
 
             }
 
 
-            return false;
+            return -1;
         }
 
         public async Task<bool> UpdateItem(MenuIngredientModel model)
@@ -91,7 +90,7 @@ namespace HomeMenu.Models
 
                     await db.OpenAsync();
 
-                    string qry = "SELECT * FROM MenuIngredients WHERE [UserId]=@userid";
+                    string qry = "SELECT * FROM MenuIngredients WHERE [UserId]=@userid ORDER BY Name";
                     var result = await db.QueryAsync<MenuIngredientModel>(qry, new {userid = UserId });
 
                     return result.ToList();
@@ -108,6 +107,37 @@ namespace HomeMenu.Models
             return null;
 
         }
+
+
+        public async Task<IList<IngredientsCatergoriesModel>> GetCatergories(string UserId)
+        {
+
+            try
+            {
+                using (SqlConnection db =
+                    new SqlConnection(connectionString))
+                {
+
+                    await db.OpenAsync();
+
+                    string qry = "SELECT * FROM IngredientCatergories WHERE [UserId]=@all OR [UserId]=@userid";
+                    var result = await db.QueryAsync<IngredientsCatergoriesModel>(qry, new {all="all", userid = UserId });
+
+                    return result.ToList();
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine("UpdateMachine exception " + ex.Message);
+
+            }
+
+            return null;
+
+        }
+
 
 
     }

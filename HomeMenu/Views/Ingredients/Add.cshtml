@@ -1,0 +1,28 @@
+﻿@using HomeMenu.Models
+@model EditIngredientModel
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Ingredient</h2>
+
+
+<form id="frmAddMenuIngredient" method="post" action="/Ingredients/AddItem">
+    <input type="text" name="ingredientItemName" id="ingredientItemName" value="" /><br />
+
+
+
+    <select id="menuIngredientCatergory" name="menuIngredientCatergory">
+        @foreach (IngredientsCatergoriesModel cat in Model.IngredientCatergories)
+        {
+
+            <option value="@cat.Name.ToString()">@cat.Name.ToString()</option>
+
+        }
+    </select>
+
+    <input type="submit" value="Add">
+
+</form>

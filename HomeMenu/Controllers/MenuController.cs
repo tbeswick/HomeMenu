@@ -46,11 +46,13 @@ namespace HomeMenu.Controllers
         {
 
             MenuItemRepository rep = new MenuItemRepository(sqlConnection);
+            MenuIngredientRepository igrep = new MenuIngredientRepository(sqlConnection);
             EditMenuItemModel md = new EditMenuItemModel();
 
             md.MenuItem = await rep.GetItemById(ModelId);
             md.ItemCatergories = await rep.GetItemCatergories(User.Identity.GetUserId());
-
+            md.AvailableIngredients = await igrep.GetItems(User.Identity.GetUserId());
+            md.CurrentIngredients = new List<MenuIngredientModel>(); // rep.GetCurrentItemIngredients(User.Identity.GetUserId());
 
             return View(md);
         }

@@ -5,11 +5,11 @@ using System.Web;
 
 namespace HomeMenu.Models
 {
-    public class IngredientIndexModel
+    public class EditIngredientModel
     {
-
-        public IList<MenuIngredientModel> Ingredients { get; set; }
         public IList<IngredientsCatergoriesModel> IngredientCatergories { get; set; }
+
+        public MenuItemModel MenuIngredient { get; set; }
 
     }
 }

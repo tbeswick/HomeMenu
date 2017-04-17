@@ -1,8 +1,35 @@
-﻿
+﻿@using HomeMenu.Models;
+@model IngredientIndexModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Ingredients</h2>
+
+
+
+<div class="row">
+    <ul>
+        @if (Model.Ingredients.Count == 0)
+        {
+            <li>You do not have any Ingredient items</li>
+        }
+        else
+        {
+            foreach (MenuIngredientModel md in Model.Ingredients)
+            {
+                <li>
+                    <a href="/Ingredients/Edit/@md.Id">@md.Name</a>
+                </li>
+            }
+        }
+    </ul>
+</div>
+
+<div class="row">
+    <a href="/Ingredients/Add">Add new ingredient item</a>
+</div>
+
+
 
