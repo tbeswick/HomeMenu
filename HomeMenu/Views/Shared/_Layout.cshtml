@@ -2,45 +2,68 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Home Menu</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HomeMenu</title>
+    <link rel="stylesheet" href="~/Content/assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/fonts/ionicons.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/Article-List.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/Footer-basic.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/Navigation-with-Button1.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/Login-Form-Clean.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/styles.css" />
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Home Menu", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <div>
+        <nav class="navbar navbar-default navigation-clean-button">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/Home" class="navbar-brand navbar-link">Home Menu</a>
+                    <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" aria-expanded="false" href="#" class="dropdown-toggle">Menu <span class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li role="presentation"><a href="#">Create</a></li>
+                                <li class="divider" role="presentation"></li>
+                                <li role="presentation"><a href="/Menu/Index">Show All</a></li>
+                                <li class="divider" role="presentation"></li>
+                                <li role="presentation"><a href="/Menu/Add">Add New Menu Item</a></li>
+                            </ul>
+                        </li>
+                        <li role="presentation"><a href="/Ingredients/Index">Ingredients </a></li>
+                    </ul>
+                    @Html.Partial("_LoginPartial")
+                  <!-- <p class="navbar-text navbar-right actions"><a href="#" class="navbar-link login">Log In</a> <a class="btn btn-default action-button" role="button" href="#">Sign Up</a></p> -->
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Ingredients","Index","Ingredients")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
+        </nav>
     </div>
     <div class="container body-content">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Home Menu</p>
-        </footer>
+        <div class="footer-basic">
+            <footer>
+                <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
+                <ul class="list-inline">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+                <p class="copyright">Company Name © 2016</p>
+            </footer>
+        </div>
+
     </div>
+
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/site")
+    <script src="~/Content/assets/bootstrap/js/bootstrap.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

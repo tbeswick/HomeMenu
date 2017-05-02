@@ -21,22 +21,12 @@ namespace HomeMenu.Controllers
         }
 
 
-        public async Task<ActionResult> Index()
+        public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated == false)
-            {
-                Response.Redirect("Account/Login");
-            }
-
-            string userId = User.Identity.GetUserId();
-
-            MenuItemRepository murep = new MenuItemRepository(sqlConnection);
-            HomeIndexModel homeIndex = new HomeIndexModel();
-            homeIndex.MenuItems = await murep.GetItems(userId);
-           
 
 
-            return View(homeIndex);
+            return View();
+
         }
 
         public ActionResult About()

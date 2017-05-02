@@ -1,43 +1,31 @@
-﻿
-@using HomeMenu.Models;
-
-@model HomeMenu.Models.HomeIndexModel
-
-
-@{
+﻿@{
     ViewBag.Title = "Home Page";
 }
 
 
 
-<div class="jumbotron">
-    <h1>Home Menu</h1>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Your menu items</h2>
+<div class="article-list">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Home Menu</h2>
+            <p class="text-center">Create home menu items and generate ingredient lists for easy on-line ordering</p>
+        </div>
+        <div class="row articles">
+            <div class="col-md-4 col-sm-6 item">
+                <a href="#"><img src="~/Content/assets/img/salad.jpg" class="img-responsive" /></a>
+                <h3 class="name">Menu Items</h3>
+                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a href="#" class="action"><i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+            </div>
+            <div class="col-md-4 col-sm-6 item">
+                <a href="#"><img src="~/Content/assets/img/veg.jpg" class="img-responsive" /></a>
+                <h3 class="name">Ingredients </h3>
+                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a href="#" class="action"><i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+            </div>
+            <div class="col-md-4 col-sm-6 item">
+                <a href="#"><img src="~/Content/assets/img/steak.jpg" class="img-responsive" /></a>
+                <h3 class="name">Create Menus</h3>
+                <p class="description">Aenean tortor est, vulputate quis leo in, vehicula rhoncus lacus. Praesent aliquam in tellus eu gravida. Aliquam varius finibus est, interdum justo suscipit id.</p><a href="#" class="action"><i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+            </div>
+        </div>
     </div>
-</div>
-
-<div class="row">
-    <ul>
-    @if (Model.MenuItems.Count == 0)
-    {
-        <li>You do not have any menu items</li>
-    }
-    else
-    {
-            foreach (MenuItemModel md in Model.MenuItems)
-            {
-                <li>
-                    <a href="/Menu/Edit/@md.Id">@md.Name</a>
-                </li>
-            }
-    }
-    </ul>
-</div>
-
-<div class="row">
-    <a href="/Menu/Add" >Add new menu item</a>
 </div>

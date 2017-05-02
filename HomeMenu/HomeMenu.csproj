@@ -211,6 +211,23 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\assets\bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\assets\bootstrap\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\assets\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\assets\css\Features-Clean.css" />
+    <Content Include="Content\assets\css\Footer-Basic.css" />
+    <Content Include="Content\assets\css\Footer-Clean.css" />
+    <Content Include="Content\assets\css\Login-Form-Clean.css" />
+    <Content Include="Content\assets\css\logo-1.css" />
+    <Content Include="Content\assets\css\logo-11.css" />
+    <Content Include="Content\assets\css\Navigation-with-Button1.css" />
+    <Content Include="Content\assets\css\styles.css" />
+    <Content Include="Content\assets\fonts\ionicons.min.css" />
+    <Content Include="Content\assets\fonts\ionicons.svg" />
+    <Content Include="Content\assets\img\salad.jpg" />
+    <Content Include="Content\assets\img\steak.jpg" />
+    <Content Include="Content\assets\img\veg.jpg" />
+    <Content Include="Content\assets\js\jquery.min.js" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -226,6 +243,13 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\assets\bootstrap\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\assets\bootstrap\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\assets\bootstrap\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\assets\bootstrap\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\assets\fonts\ionicons.eot" />
+    <Content Include="Content\assets\fonts\ionicons.ttf" />
+    <Content Include="Content\assets\fonts\ionicons.woff" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -287,6 +311,7 @@
     <Content Include="Views\Menu\Edit.cshtml" />
     <Content Include="Views\Ingredients\Index.cshtml" />
     <Content Include="Views\Ingredients\Add.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

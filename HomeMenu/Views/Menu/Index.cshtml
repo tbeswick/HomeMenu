@@ -1,0 +1,40 @@
+﻿
+@using HomeMenu.Models;
+
+@model HomeMenu.Models.HomeIndexModel
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Your menu items</h2>
+    </div>
+</div>
+
+<div class="row">
+    <ul>
+        @if (Model.MenuItems.Count == 0)
+        {
+            <li>You do not have any menu items</li>
+        }
+        else
+        {
+            foreach (MenuItemModel md in Model.MenuItems)
+            {
+                <li>
+                    <a href="/Menu/Edit/@md.Id">@md.Name</a>
+                </li>
+            }
+        }
+    </ul>
+</div>
+
+<div class="row">
+    <a href="/Menu/Add">Add new menu item</a>
+</div>
+
