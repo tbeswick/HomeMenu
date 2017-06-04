@@ -6,59 +6,110 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit Item</h2>
 
-<div class="row">
-    <form id="frmAddMenuItem" method="post" action="/Menu/EditItem">
-        <input type="text" name="Name" id="Name" value="@Model.MenuItem.Name" /><br />
-        <input type="hidden" name="Id" value="@Model.MenuItem.Id" />
-
-
-        <select id="Catergory" name="Catergory">
-            @foreach(ItemCatergoriesModel cat in Model.ItemCatergories)
+<div class="container">
+    <div class="intro">
+        <h2 class="text-center">Menu Item</h2>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            @if (Model.MenuItem.Image == null)
             {
-                var selected = "";
-                if (Model.MenuItem.Catergory.Trim() == cat.Name.ToString().Trim())
-                {
-                    selected = "selected";
-                }
-                <option value="@cat.Name" @selected>@cat.Name</option>
-
+                <img class="menu-item-image img-menu" src="~/Content/assets/img/blank.png" />
             }
-        </select>
+            else
+            {
+                <img class="menu-item-image img-menu" src="~/Content/assets/img/@Model.MenuItem.Image" />
+            }
 
-        <input type="submit" value="Submit Edit">
+            <div class="image-edit">
+                @using (Html.BeginForm("AddImage", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                    <input type="file" name="file" id="file" /><br><br>
+                    <input type="hidden" name="itemid" value="@Model.MenuItem.Id" />
+                    <input type="submit" class="btn btn-default action-button" value="Upload Image" />
+                    <br><br>
+                    @ViewBag.Message
+                }
+            </div>
 
-    </form>
+        </div>
+        <div class="col-md-4 menu-edit-table">
+            <form id="frmAddMenuItem" method="post" action="/Menu/EditItem">
+                <table>
+                    <tr>
+                        <td>Item name</td>
+                        <td>
+                            <input type="text" name="Name" id="Name" value="@Model.MenuItem.Name" />
+                            <input type="hidden" name="Id" value="@Model.MenuItem.Id" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Time catergory</td>
+                        <td>
+                            <select id="Catergory" name="Catergory">
+                                @foreach (ItemCatergoriesModel cat in Model.ItemCatergories)
+                                {
+                                    var selected = "";
+                                    if (Model.MenuItem.Catergory.Trim() == cat.Name.ToString().Trim())
+                                    {
+                                        selected = "selected";
+                                    }
+                                    <option value="@cat.Name" @selected>@cat.Name</option>
+
+                                }
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" class="btn btn-default action-button" value="Submit Edit">
+                        </td>
+                    </tr>
+
+                </table>
+            </form>
+
+
+        </div>
+    </div>
 </div>
 
-<div class="row">
-    <h2>Ingredients</h2>
-    <ul>
-       
-    @foreach(MenuItemIngredientModel ig in Model.CurrentIngredients)
-    {
-        <li>@ig.IngredientName</li>
-    }
-    </ul> 
 
-    <h2>Add an ingredient</h2>
-    <select id="newIngredient" name="newIngredient">
-        @foreach (MenuIngredientModel ig in Model.AvailableIngredients)
-        {
-            <option value="@ig.Id" >@ig.Name</option>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 menu-edit-table">
+            <h2>Ingredients</h2>
 
-        }
-    </select>
-    <a href="#" class="addMenuItemIngredient" >add</a> ingredient
+            <table>
+                @foreach (MenuItemIngredientModel ig in Model.CurrentIngredients)
+                {
+                    <tr>
+                        <td>@ig.IngredientName</td>
+                        <td><a href="#" class="deleteMenuItemIngredient">delete</a></td>
+                    </tr>
+                }
+            </table>
+        </div>
 
-    <input type="hidden" id="userId" value="@Model.MenuItem.UserId" />
-    <input type="hidden" id="itemId" value="@Model.MenuItem.Id" />
+        <div class="col-md-6">
+            <h2>Add an ingredient</h2>
+            <select id="newIngredient" name="newIngredient">
+                @foreach (MenuIngredientModel ig in Model.AvailableIngredients)
+            {
+                    <option value="@ig.Id">@ig.Name</option>
+
+                }
+            </select>&nbsp;&nbsp;
+            <a href="#" class="addMenuItemIngredient">add</a> ingredient
+
+            <input type="hidden" id="userId" value="@Model.MenuItem.UserId" />
+            <input type="hidden" id="itemId" value="@Model.MenuItem.Id" />
+
+        </div>
 
 
-
+    </div>
 </div>
 
-<div id="tmp">
-
-</div>

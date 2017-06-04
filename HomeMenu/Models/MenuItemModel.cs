@@ -12,7 +12,7 @@ namespace HomeMenu.Models
         public string UserId { get; set; }
         public string Name { get; set; }
         public string Catergory {get;set;}
-
+        public string Image { get; set; }
         public DateTime Added { get; set; }
 
         public DateTime Modified { get; set; }

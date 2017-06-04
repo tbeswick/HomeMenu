@@ -221,9 +221,14 @@
     <Content Include="Content\assets\css\logo-1.css" />
     <Content Include="Content\assets\css\logo-11.css" />
     <Content Include="Content\assets\css\Navigation-with-Button1.css" />
+    <Content Include="Content\assets\css\Registration-Form-with-Photo.css" />
     <Content Include="Content\assets\css\styles.css" />
     <Content Include="Content\assets\fonts\ionicons.min.css" />
     <Content Include="Content\assets\fonts\ionicons.svg" />
+    <Content Include="Content\assets\img\blank.jpg" />
+    <Content Include="Content\assets\img\blank.png" />
+    <Content Include="Content\assets\img\home.png" />
+    <Content Include="Content\assets\img\menu_res.jpg" />
     <Content Include="Content\assets\img\salad.jpg" />
     <Content Include="Content\assets\img\steak.jpg" />
     <Content Include="Content\assets\img\veg.jpg" />
@@ -312,6 +317,7 @@
     <Content Include="Views\Ingredients\Index.cshtml" />
     <Content Include="Views\Ingredients\Add.cshtml" />
     <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Home\Landing.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

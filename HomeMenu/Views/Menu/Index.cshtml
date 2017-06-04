@@ -9,12 +9,13 @@
 }
 
 
-
+<!--
 <div class="row">
     <div class="col-md-4">
         <h2>Your menu items</h2>
     </div>
 </div>
+
 
 <div class="row">
     <ul>
@@ -32,9 +33,32 @@
             }
         }
     </ul>
-</div>
+</div> 
 
 <div class="row">
     <a href="/Menu/Add">Add new menu item</a>
-</div>
+</div>-->
 
+<div class="photo-gallery">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Your Menu Items</h2>
+        </div>
+        <div class="row photos">
+            @foreach (MenuItemModel md in Model.MenuItems)
+            {
+            <div class="col-lg-3 col-md-4 col-sm-6 item">
+                @if (md.Image == null)
+                {
+                    <a href="/Menu/Edit/@md.Id" data-lightbox="photos"><img class="img-responsive img-menu" src="~/Content/assets/img/blank.png" /></a>
+                }
+                else
+                {
+                    <a href="/Menu/Edit/@md.Id" data-lightbox="photos"><img class="img-responsive img-menu" src="~/Content/assets/img/@md.Image" /></a>
+                }
+                <p>@md.Name</p>
+            </div>
+            }
+        </div>
+    </div>
+</div>

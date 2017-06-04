@@ -24,8 +24,15 @@ namespace HomeMenu.Controllers
         public ActionResult Index()
         {
 
+            if (User.Identity.IsAuthenticated)
+            {
 
-            return View();
+                return View();
+            }
+            else
+            {
+                return View("Landing");
+            }
 
         }
 

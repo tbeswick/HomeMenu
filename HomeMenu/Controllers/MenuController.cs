@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using HomeMenu.Models;
 using System.Configuration;
+using System.IO;
 
 namespace HomeMenu.Controllers
 {
@@ -70,6 +71,35 @@ namespace HomeMenu.Controllers
             return View(md);
         }
 
+        [Route("Menu/AddImage")]
+        [HttpPost]
+        public async Task<ActionResult> AddImageAsync(HttpPostedFileBase file, int itemid)
+        {
+            if (file != null && file.ContentLength > 0)
+                try
+                {
+                    string path = Path.Combine(Server.MapPath("~/Content/assets/img/"),
+                                               Path.GetFileName(file.FileName));
+                    file.SaveAs(path);
+
+                    MenuItemRepository rep = new MenuItemRepository(sqlConnection);
+                    MenuItemModel md = await rep.GetItemById(itemid);
+                    md.Image = file.FileName;
+                    md.Modified = DateTime.UtcNow;
+                    await rep.UpdateItem(md);
+                    ViewBag.Message = "File uploaded successfully";
+                }
+                catch (Exception ex)
+                {
+                    ViewBag.Message = "ERROR:" + ex.Message.ToString();
+                }
+            else
+            {
+                ViewBag.Message = "You have not specified a file.";
+            }
+            return Redirect("/Menu/Edit/" + itemid.ToString());
+        }
+
 
         [Route("Menu/AddItem")]
         [HttpPost]
@@ -107,6 +137,19 @@ namespace HomeMenu.Controllers
         {
             MenuItemRepository rep = new MenuItemRepository(sqlConnection);
             await rep.AddIngredientToMenuItem(model);
+
+
+            return null;
+
+        }
+
+
+        [Route("Menu/DeleteIngredient")]
+        [HttpPost]
+        public async Task<ActionResult> DeleteIngredientAsync(AddIngredientToItemModel model)
+        {
+            MenuItemRepository rep = new MenuItemRepository(sqlConnection);
+            await rep.DeleteIngredientToMenuItem(model);
 
 
             return null;

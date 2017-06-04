@@ -31,9 +31,9 @@ namespace HomeMenu.Models
 
                     await db.OpenAsync();
 
-                    string qry = "INSERT INTO MenuItems ([UserId],[Name],[Catergory],[Added],[Modified]) " +
+                    string qry = "INSERT INTO MenuItems ([UserId],[Name],[Catergory],[Image],[Added],[Modified]) " +
                                   "VALUES (" +
-                                  "@UserId,@Name,@Catergory,@Added,@Modified); SELECT CAST(SCOPE_IDENTITY() as int)";
+                                  "@UserId,@Name,@Catergory,@Image,@Added,@Modified); SELECT CAST(SCOPE_IDENTITY() as int)";
                     var result = await db.QueryAsync<int>(qry, model);
                     return result.Single();
                 }
@@ -84,7 +84,41 @@ namespace HomeMenu.Models
 
         }
 
-        
+
+        public async Task<int> DeleteIngredientToMenuItem(AddIngredientToItemModel model)
+        {
+
+
+            try
+            {
+                using (SqlConnection db =
+                    new SqlConnection(connectionString))
+                {
+
+                    await db.OpenAsync();
+
+                    string qry = "DELETE FROM IngredientToItem WHERE [MenuItem]=@ItemId AND [MenuIngredient]=@IngredientId";
+                        
+                    await db.QueryAsync<int>(qry, model);
+                    return 1;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine("DeleteIngredientToMenuItem exception " + ex.Message);
+
+            }
+
+
+            return 0;
+
+
+        }
+
+
+
         public async Task<IList<MenuItemIngredientModel>>GetCurrentItemIngredients(long itemId)
         {
 
@@ -129,7 +163,7 @@ namespace HomeMenu.Models
 
                     await db.OpenAsync();
 
-                    string qry = "UPDATE MenuItems SET [Name]=@Name, [Catergory]=@Catergory,[Modified]=@Modified " +
+                    string qry = "UPDATE MenuItems SET [Name]=@Name, [Catergory]=@Catergory,[Image]=@Image,[Modified]=@Modified " +
                                   "WHERE Id=@Id";
                     await db.QueryAsync<int>(qry, model);
 
