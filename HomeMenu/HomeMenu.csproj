@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -218,6 +219,7 @@
     <Content Include="Content\assets\css\Footer-Basic.css" />
     <Content Include="Content\assets\css\Footer-Clean.css" />
     <Content Include="Content\assets\css\Login-Form-Clean.css" />
+    <Content Include="Content\assets\css\Login-Form-Dark.css" />
     <Content Include="Content\assets\css\logo-1.css" />
     <Content Include="Content\assets\css\logo-11.css" />
     <Content Include="Content\assets\css\Navigation-with-Button1.css" />
@@ -228,6 +230,7 @@
     <Content Include="Content\assets\img\blank.jpg" />
     <Content Include="Content\assets\img\blank.png" />
     <Content Include="Content\assets\img\home.png" />
+    <Content Include="Content\assets\img\landing.jpg" />
     <Content Include="Content\assets\img\menu_res.jpg" />
     <Content Include="Content\assets\img\salad.jpg" />
     <Content Include="Content\assets\img\steak.jpg" />
